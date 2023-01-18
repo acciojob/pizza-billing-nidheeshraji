@@ -7,7 +7,6 @@ public class Pizza {
     private String bill="";
 
 
-
     public Pizza(Boolean isVeg){
         this.isVeg = isVeg;
 
