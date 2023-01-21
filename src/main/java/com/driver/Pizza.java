@@ -5,6 +5,9 @@ public class Pizza {
     private int price=0;
     private Boolean isVeg;
     private String bill="";
+    private boolean addExtraCheese;
+    private boolean addExtraToppings;
+    private boolean  addTakeaway;
 
 
     public Pizza(Boolean isVeg){
@@ -12,11 +15,11 @@ public class Pizza {
 
         if(isVeg==true)
         {
-           bill=bill+"Base Price Of The Pizza: 300"+"\n" ;
+
            price=price+300;
         }
         else {
-            bill=bill+"Base Price Of The Pizza: 400"+"\n";
+
             price=price+400;
         }
     }
@@ -27,42 +30,70 @@ public class Pizza {
 
     public void addExtraCheese() {
 
-        if (bill.contains("Cheese"))
+        if (addExtraCheese)
             return;
         else {
-            bill = bill + "Extra Cheese Added: 80" + "\n";
             price=price+80;
+            addExtraCheese=true;
         }
     }
 
     public void addExtraToppings(){
 
-        if(bill.contains("Toppings"))
+        if(addExtraToppings)
             return;
         else
         {
             if(isVeg)
             {
-                bill=bill+"Extra Toppings Added: 70 "+"\n";
+
                 price=price+70;
+                addExtraToppings=true;
             }
             else {
-                bill=bill+"Extra Toppings Added: 120 "+"\n";
+
                 price=price+170;
+                addExtraToppings=true;
 
             }
         }
     }
 
     public void addTakeaway(){
-        if(bill.contains("Paperbag"))
+        if(addTakeaway)
             return;
-        bill=bill+"Paperbag Added: 20"+"\n";
+
         price=price+20;
+        addTakeaway=true;
     }
 
     public String getBill(){
-        bill=bill+"Total Price: "+price+"\n";
+        if(isVeg==true)
+            bill=bill+"Base Price Of The Pizza: 300"+"\n" ;
+        else
+            bill=bill+"Base Price Of The Pizza: 400"+"\n";
+
+        if(addExtraCheese)
+            bill=bill+"Extra Cheese Added: 80"+"\n";
+
+        if(addExtraToppings)
+        {
+            if(isVeg)
+            {
+                bill=bill+"Extra Toppings Added: 70 "+"\n";
+
+            }
+            else {
+                bill = bill + "Extra Toppings Added: 120 " + "\n";
+            }
+
+        }
+        if(addTakeaway)
+        {
+            bill=bill+"Paperbag Added: 20"+"\n";
+        }
+
+        bill=bill+"Total Price:"+price+"\n";
         return this.bill;
     }
     // getter and setters
